@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+const regex = /^[a-z]*$/
+
 
 function PokeForm({setSubmitValue}) {
     const [inputText, setInputText] = useState('');
@@ -7,7 +9,8 @@ function PokeForm({setSubmitValue}) {
 
     function handleInput(e) {
         const button = e.target.parentNode.querySelector('button')
-       
+
+       if(!regex.test(e.target.value)) return;
         setInputText(e.target.value)
         
         if (e.target.value === '') {
